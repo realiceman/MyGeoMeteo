@@ -1,0 +1,39 @@
+/* Empty. Add your own CSS if you like */
+.container{
+    position: relative;
+}
+
+.myContact h2,h3{
+    color: bisque;
+    font:bolder;
+    font-family: "Segoe UI";
+}
+
+.image{
+    width:50%;
+}
+
+.under{
+    padding-top: 95%;
+}
+.scroll{
+    height: 100%;
+}
+
+#map{
+    height: 100%;
+    width: 100%;
+}
+
+.live{
+    padding-top: 25%;
+    text-align: center;
+}
+
+.scroll-content{
+    background: url("../img/backgd.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+
+}
