@@ -1,8 +1,13 @@
 
-<ion-content class=padding">
-<div class="live">
-<h1><strong>LIVE WEATHER</strong></h1><br/>
-<h2>Temperature: {{temperature|number:1}} °C</h2> <br/>
-<h2>Speed of wind : {{windSpeed|number:1}} Km/h</h2>
-</div>
-</ion-content>
+
+<ion-view view-title="My GPS Weather">
+    <ion-content class=padding">
+        <div class="live">
+            <h1 style="color:#ffffff"><strong>LIVE GPS WEATHER</strong></h1><br/>
+            <h2>City: <b>{{city}} ({{country}})</b></h2> <br/>
+            <h2>Description:<b> {{description}}</b></h2> <br/>
+            <h2>Temperature:<b> {{temperature|number:1}} °C</b></h2> <br/>
+            <h2>Speed of wind : <b>{{windSpeed|number:1}} Km/h</b></h2>
+        </div>
+    </ion-content>
+</ion-view>

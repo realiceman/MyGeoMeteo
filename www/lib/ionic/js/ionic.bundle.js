@@ -1791,6 +1791,7 @@ window.ionic.version = '1.3.1';
     },
     triggered: false,
     handler: function dragGesture(ev, inst) {
+
       if (ev.srcEvent.type == 'touchstart' || ev.srcEvent.type == 'touchend') {
         this.preventedFirstMove = false;
 

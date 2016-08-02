@@ -48,7 +48,7 @@ app.config(function($stateProvider, $urlRouterProvider){
         templateUrl:"templates/config.html"
     });
     $stateProvider.state("live", {
-        url:"/live/:temperature/:windSpeed",
+        url:"/live/:temperature/:windSpeed/:description/:city/:country",
         templateUrl:"templates/live.html",
         controller:"liveCtrl"
     });
@@ -66,12 +66,13 @@ app.controller("MeteoCtrl", function($scope, $state){
 
 app.controller("InfoMeteoCtrl", function($scope, $stateParams, $http, $ionicLoading){
 
-    url= "http://api.openweathermap.org/data/2.5/forecast/dailly?q="+$stateParams.city+"&APPID=5e21a5422be97e02b21efc48ef3b1e6c";
+    url= "http://api.openweathermap.org/data/2.5/forecast/daily?q="+$stateParams.city+"&mode=json&units=metric&cnt=7&APPID=5e21a5422be97e02b21efc48ef3b1e6c";
     $ionicLoading.show({
        template:"patience is the key..."
     });
     $http.get(url)
         .success(function(data){
+            console.log(data);
         $scope.meteo = data;
             $ionicLoading.hide();
        })
@@ -86,6 +87,7 @@ app.controller("GeoCtrl", function($cordovaGeolocation, $scope, $http, $state){
 
 
     $scope.myWeather = function (){
+                console.log($scope.position);
                 Latitude = $scope.position.coords.latitude;
                 Longitude = $scope.position.coords.longitude;
 
@@ -98,7 +100,11 @@ app.controller("GeoCtrl", function($cordovaGeolocation, $scope, $http, $state){
                         $scope.data = data;
                         $state.go("live",{
                             temperature:(data.main.temp -32 ) * 5/9,
-                            windSpeed: (data.wind.speed) * 1.609344
+                            windSpeed: (data.wind.speed) * 1.609344,
+                            description: data.weather[0].description,
+                            city: data.name,
+                            country: data.sys.country
+
                         })
                     })
 
@@ -114,7 +120,7 @@ app.controller("GeoCtrl", function($cordovaGeolocation, $scope, $http, $state){
 
   $cordovaGeolocation.getCurrentPosition(options)
       .then(function(position){
-
+         console.log(position);
          $scope.position = position;
           var latLng=new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
           var mapOtions = {
@@ -142,5 +148,8 @@ app.controller("liveCtrl", function($scope, $stateParams){
 
     $scope.temperature = $stateParams.temperature;
     $scope.windSpeed   = $stateParams.windSpeed;
+    $scope.description = $stateParams.description;
+    $scope.city        = $stateParams.city;
+    $scope.country     = $stateParams.country;
 
 });

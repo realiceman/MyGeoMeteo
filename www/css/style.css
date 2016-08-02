@@ -13,8 +13,16 @@
     width:50%;
 }
 
+#city{
+    font-size: 150%;
+
+    color: bisque;
+    font:bolder ornament ;
+    font-family: "Segoe UI";
+}
 .under{
-    padding-top: 95%;
+    text-align: center;
+    padding-top: 35%;
 }
 .scroll{
     height: 100%;
@@ -25,9 +33,15 @@
     width: 100%;
 }
 
-.live{
+.live {
     padding-top: 25%;
     text-align: center;
+
+}
+
+.live h1, h2{
+    font:bolder ornament ;
+    font-family: "Segoe UI";
 }
 
 .scroll-content{
